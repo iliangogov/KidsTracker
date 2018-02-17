@@ -37,6 +37,7 @@ let userController = require('./server/data/controllers/userController')
 app.route('/api/user-details/:id').get(userController.getUserById)
 app.route('/api/add-user').post(userController.registerNewUser)
 app.route('/api/update-user').put(userController.updateUser)
+app.route('/api/login').post(userController.tryAuthenticate)
 
 // Retreive Angular build 
 app.get('/*', function (req, res) {
