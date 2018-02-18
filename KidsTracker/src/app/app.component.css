@@ -1,0 +1,8 @@
+.btn-round-sm {
+    border-radius: 15px;
+    margin: 3px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: white !important
+}
