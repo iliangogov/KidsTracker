@@ -46,14 +46,14 @@ function tryAuthenticate(req, res) {
 
     UserModel.findOne({ loginEmail: personToAuthenticate.loginEmail }, function (err, person) {
         if (err) {
-            res.json({
+            return res.json({
                 success: false,
                 msg: err.message
             })
         }
 
         if (!person) {
-            res.status(401).send({ err: 'Authentication failed. User with this login email not found' })
+            res.status(401).json({ err: 'Authentication failed. User with this login email not found', emailErr: true })
         } else {
             if (checkIfPasswordMatches(personToAuthenticate.password, person.salt, person.hashedPass)) {
                 let token = jwt.encode(person._id, dbConfig.secret);
@@ -72,7 +72,7 @@ function tryAuthenticate(req, res) {
                 }, 1000);
 
             } else {
-                return res.status(401).send({
+                return res.status(401).json({
                     err: 'Authentication failed. Wrong password',
                     passwordErr: true
                 })
