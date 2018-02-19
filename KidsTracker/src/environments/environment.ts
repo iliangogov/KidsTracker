@@ -5,5 +5,7 @@
 
 export const environment = {
   production: false,
-  loginUserUrl: 'http://localhost:3000/api/login'
+  loginUserUrl: 'http://localhost:3000/api/login',
+  updateUserUrl: 'http://localhost:3000/api/update-user',
+  getUserUrl: 'http://localhost:3000/api/user-details/'
 };

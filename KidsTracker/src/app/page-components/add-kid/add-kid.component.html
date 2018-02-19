@@ -1,0 +1,11 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Enter Kid's name</h2>
+    <form name="form" (ngSubmit)="f.form.valid && addKid()" #f="ngForm" novalidate>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !kidsname.valid }">
+        <label for="username">Name</label>
+        <input type="text" class="form-control" name="kidsname" [(ngModel)]="name" #kidsname="ngModel" required />
+        <div *ngIf="f.submitted && kidsname.errors?.required" class="help-block">*Kid's name is required</div>
+      </div>
+      <button  class="btn btn-primary">Submit</button>
+    </form>
+  </div>

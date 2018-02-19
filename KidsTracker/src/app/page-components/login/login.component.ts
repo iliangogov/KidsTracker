@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       result => {
         if (result.success === true) {
           this.loading = false;
-          this.router.navigate(['/home']).then(() => {
+          this.router.navigate(['/select-role']).then(() => {
             alert('Successfully logged in!');
           });
         } else {

@@ -14,7 +14,8 @@ module.exports.init = function (mongoose) {
         isAdmin: { type: Boolean, default: false },
         mobileNumber: { type: String, default: 'Not provided' },
         resetPasswordToken: String,
-        resetPasswordExpires: Date
+        resetPasswordExpires: Date,
+        kids: { type: [String], default: [] }
     })
 
     let User = mongoose.model("User", userSchema)

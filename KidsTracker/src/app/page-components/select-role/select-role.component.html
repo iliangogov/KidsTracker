@@ -1,0 +1,15 @@
+<div class="role-wrapper">
+  <h4>Select role</h4>
+  <div class="row">
+    <a href="javascript:;" class="btn btn-info btn-lg" (click)="handleParentChoice()">Parent</a>
+    <a href="javascript:;" class="btn btn-info btn-lg " (click)="handleKidChoice()">Kid</a>
+  </div>
+  <div class="row down">
+    <a *ngIf="showAddKidButton" [routerLink]="['/add-kid']" class="btn btn-info btn-lg" (click)="handleParentChoice()">Add New Kid</a>
+    <a *ngIf="showMapButton" [routerLink]="['/map']" class="btn btn-info btn-lg ">Show Map</a>
+  </div>
+  <div class="row down" *ngIf="showKidsList">
+    <h4>Select Kid who is using this device (to be traced by the parent)</h4>
+    <a *ngFor="let kid of user.kids" [routerLink]="['/tracker', kid]" class="btn btn-info btn-lg kidbutton">{{kid}}</a>
+  </div>
+</div>

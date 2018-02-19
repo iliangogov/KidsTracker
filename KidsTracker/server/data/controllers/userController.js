@@ -61,7 +61,8 @@ function tryAuthenticate(req, res) {
                     _id: person._id,
                     firstName: person.firstName,
                     lastName: person.lastName,
-                    loginEmail: person.loginEmail
+                    loginEmail: person.loginEmail,
+                    kids: person.kids
                 }
                 setTimeout(() => {
                     return res.json({
@@ -121,10 +122,11 @@ function getUserById(req, res) {
             let personToReturn;
             if (user) {
                 personToReturn = {
-                    _id: person._id,
-                    firstName: person.firstName,
-                    lastName: person.lastName,
-                    loginEmail: person.loginEmail
+                    _id: user._id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    loginEmail: user.loginEmail,
+                    kids: user.kids
                 }
             }
             res.json({

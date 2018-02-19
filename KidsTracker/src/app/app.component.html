@@ -26,11 +26,14 @@
           <a [routerLink]="['register']" class="btn btn-success btn-round-sm">Register</a>
         </li>
         <li *ngIf="isLogged">
+          <a [routerLink]="['select-role']" class="btn btn-primary btn-round-sm">Select Role</a>
+        </li>
+        <li *ngIf="isLogged">
           <a class="btn btn-danger btn-round-sm" (click)="logOut()">Log Out</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-
+<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
 <router-outlet> </router-outlet>
