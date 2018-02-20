@@ -1,3 +1,13 @@
 <p>
   map works!
 </p>
+
+<agm-map [latitude]="initialLatitude" [longitude]="initialLongitude" [zoom]="zoom" >
+  <agm-marker *ngFor="let kid of kidsList" [latitude]="initialLatitude" [longitude]="initialLongitude" (mouseOver)="kid.infoWindowOpen = true" (mouseOut)="kid.infoWindowOpen = false">
+    	<agm-info-window [isOpen]="kid.infoWindowOpen">
+          <p>
+            <strong>{{kid.name}}</strong>
+          </p>
+        </agm-info-window>
+  </agm-marker>
+</agm-map>

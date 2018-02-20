@@ -8,6 +8,7 @@ const express = require('express'),
     morgan = require('morgan'),
     path = require('path'),
     cors = require('cors');
+http = require('http');
 
 app.use(express.static(__dirname + '/dist'))
 app.use(cors())
@@ -45,7 +46,17 @@ app.get('/*', function (req, res) {
         .sendFile(path.join(__dirname, '/dist/index.html'));
 });
 
-app.listen(port)
+let server = http.createServer(app);
+let io = require('socket.io')(server);
+io.on('connection', function (socket) {
+    socket.on('parent', function (kidObj) {
+        console.log('Server receiving..',kidObj.name,kidObj.parentId)
+        // send socket to Parent who is subscribed to this chanel
+        io.sockets.emit(kidObj.name + kidObj.parentId, { result: kidObj });
+    })
+});
+
+server.listen(port)
 
 // Dev log
 console.log('Server is running at: http://localhost:' + port);

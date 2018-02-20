@@ -20,8 +20,8 @@ export class AddKidComponent implements OnInit {
 
   addKid() {
     const index = this.loggedUser.kids.findIndex(x => x === this.name);
-    if (index > 0) {
-      this.toasterService.pop('error', '', 'You allready have Kid with this name. Please enter unique name.')
+    if (index >= 0) {
+      this.toasterService.pop('error', '', 'You allready have Kid with this name. Please enter unique name.');
     } else {
       this.loggedUser.kids.push(this.name);
       this.authService.updateUser(this.loggedUser).subscribe(result => {

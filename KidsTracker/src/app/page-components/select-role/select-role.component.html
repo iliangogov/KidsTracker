@@ -9,7 +9,9 @@
     <a *ngIf="showMapButton" [routerLink]="['/map']" class="btn btn-info btn-lg ">Show Map</a>
   </div>
   <div class="row down" *ngIf="showKidsList">
-    <h4>Select Kid who is using this device (to be traced by the parent)</h4>
-    <a *ngFor="let kid of user.kids" [routerLink]="['/tracker', kid]" class="btn btn-info btn-lg kidbutton">{{kid}}</a>
+    <div class="col-md-12">
+      <h4>Select Kid who is using this device (to be traced by the parent)</h4>
+      <a *ngFor="let kid of user.kids" [routerLink]="['/tracker', kid]" class="btn btn-info btn-lg kidbutton">{{kid}}</a>
+    </div>
   </div>
 </div>
