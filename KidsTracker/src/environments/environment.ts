@@ -8,5 +8,6 @@ export const environment = {
   loginUserUrl: 'http://localhost:3000/api/login',
   updateUserUrl: 'http://localhost:3000/api/update-user',
   getUserUrl: 'http://localhost:3000/api/user-details/',
+  createUserUrl: 'http://localhost:3000/api/add-user/',
   socketUrl: 'http://localhost:3000',
 };

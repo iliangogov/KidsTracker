@@ -13,6 +13,7 @@ export class MapComponent implements OnInit {
   initialLatitude: number;
   initialLongitude: number;
   zoom = 18;
+  mapType = 'roadmap';
 
   constructor(
     private authService: AuthenticationService,
@@ -38,5 +39,25 @@ export class MapComponent implements OnInit {
         console.log(`${data.result.name}, lat: ${data.result.lat}, lng: ${data.result.lng}`);
       });
     });
+
+    if (this.kidsList.length === 0) {
+      setInterval(() => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(position => {
+            const me = {
+              parentId: this.loggedUser._id,
+              name: 'Me',
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            this.initialLatitude = me.lat;
+            this.initialLongitude = me.lng;
+
+            this.kidsList.push(me);
+          });
+        }
+      }, 1000);
+    }
   }
 }

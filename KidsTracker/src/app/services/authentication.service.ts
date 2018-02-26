@@ -10,6 +10,7 @@ export class AuthenticationService {
   private loginUrl = environment.loginUserUrl;
   private updateUserUrl = environment.updateUserUrl;
   private getUserUrl = environment.getUserUrl;
+  private createUserUrl = environment.createUserUrl;
   constructor(private http: Http) { }
 
   login(userToLogin): Observable<any> {
@@ -45,6 +46,10 @@ export class AuthenticationService {
 
   getUserById(userId) {
     return this.http.get(this.getUserUrl + userId).map((res: Response) => res.json());
+  }
+
+  createUser(newUser) {
+    return this.http.post(this.createUserUrl, { person: newUser }).map((res: Response) => res.json());
   }
 
 }

@@ -1,13 +1,19 @@
-<p>
-  map works!
-</p>
+<div class="row selectmapwrapper">
+  <select class="input input-sm bg-info" name="mapTypeSelection" #mapTypeSelection [(ngModel)]="mapType">
+    <option [value]="'hybrid'">Hybrid</option>
+    <option [value]="'terrain'">Terrain</option>
+    <option [value]="'satellite'">Satellite</option>
+    <option selected="selected" [value]="'roadmap'">Roadmap</option>
+  </select>
+</div>
 
-<agm-map [latitude]="initialLatitude" [longitude]="initialLongitude" [zoom]="zoom" >
-  <agm-marker *ngFor="let kid of kidsList" [latitude]="initialLatitude" [longitude]="initialLongitude" (mouseOver)="kid.infoWindowOpen = true" (mouseOut)="kid.infoWindowOpen = false">
-    	<agm-info-window [isOpen]="kid.infoWindowOpen">
-          <p>
-            <strong>{{kid.name}}</strong>
-          </p>
-        </agm-info-window>
+<agm-map [latitude]="initialLatitude" [longitude]="initialLongitude" [zoom]="zoom" [mapTypeId]="mapType">
+  <agm-marker *ngFor="let kid of kidsList" [latitude]="kid.lat" [longitude]="kid.lng" (mouseOver)="kid.infoWindowOpen = true"
+    (mouseOut)="kid.infoWindowOpen = false">
+    <agm-info-window [isOpen]="kid.infoWindowOpen">
+      <p>
+        <strong>{{kid.name}}</strong>
+      </p>
+    </agm-info-window>
   </agm-marker>
 </agm-map>
