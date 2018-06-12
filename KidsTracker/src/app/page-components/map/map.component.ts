@@ -40,24 +40,28 @@ export class MapComponent implements OnInit {
       });
     });
 
-    if (this.kidsList.length === 0) {
-      setInterval(() => {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(position => {
-            const me = {
-              parentId: this.loggedUser._id,
-              name: 'Me',
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
+    // setTimeout(() => {
+    //   console.log(this.kidsList);
+    //   if (this.kidsList.length === 0) {
+    //     setInterval(() => {
+    //       if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition(position => {
+    //           const me = {
+    //             parentId: this.loggedUser._id,
+    //             name: 'Me',
+    //             lat: position.coords.latitude,
+    //             lng: position.coords.longitude
+    //           };
 
-            this.initialLatitude = me.lat;
-            this.initialLongitude = me.lng;
+    //           this.initialLatitude = me.lat;
+    //           this.initialLongitude = me.lng;
 
-            this.kidsList.push(me);
-          });
-        }
-      }, 1000);
-    }
+    //           this.kidsList = [];
+    //           this.kidsList.push(me);
+    //         });
+    //       }
+    //     }, 1000);
+    //   }
+    // }, 1000);
   }
 }
